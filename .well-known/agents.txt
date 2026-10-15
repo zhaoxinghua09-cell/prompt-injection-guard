@@ -1,0 +1,3 @@
+agent-name: prompt-injection-guard
+contact: https://github.com/zhaoxinghua09-cell/prompt-injection-guard
+ecosystem: https://github.com/zhaoxinghua09-cell/awesome-trusted-agents
