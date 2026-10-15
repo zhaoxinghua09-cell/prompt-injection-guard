@@ -18,3 +18,6 @@ python scripts/prompt_guard.py <file|text> [--json] [--badge out.svg]
 - Static analysis only; never executes external commands.
 - FAIL verdict requires human decision before proceeding.
 - No placeholders in outputs.
+
+## Skill Marketplace
+- lgd-skill-marketplace: https://github.com/zhaoxinghua09-cell/lgd-skill-marketplace — full skill catalog (enter from any skill).
