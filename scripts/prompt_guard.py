@@ -3,7 +3,7 @@
 """prompt-injection-guard — 提示注入/恶意指令检测（LGD 威胁模式库）。
 理论根基：LGD 三律·有门禁（fail-closed）。Usage:
   python prompt_guard.py <file|text> [--json] [--badge out.svg]"""
-import argparse, base64, hashlib, json, re, sys
+import argparse, base64, hashlib, json, os, re, sys
 
 THREATS = {
     "prompt_injection": [
@@ -52,8 +52,8 @@ def scan(text):
 
 def score_text(text):
     hits = scan(text)
-    # SAFE 角度：威胁扫描 45 分基线，每类命中 -6
-    safe = max(0, 45 - len({h["category"] for h in hits}) * 6)
+    # SAFE 角度：威胁扫描 100 分基线，每类命中 -6；零命中即满分（干净输入必须 PASS）
+    safe = max(0, 100 - len({h["category"] for h in hits}) * 6)
     machine = 55  # 基础机器可读分（输入输出结构化）
     total = round((safe + machine) / 2)
     return {"safe": safe, "machine": machine, "total": total,
